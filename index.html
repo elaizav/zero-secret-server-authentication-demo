@@ -3,10 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zero Secret Server Authentication Demo</title>
+    <title>Zero Secret Server Authentication Demo Prototype</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Zero Secret Server Authentication Demo</h1>
-    <p>Демонстраційний прототип системи автентифікації.</p>
+    <main class="page">
+        <section class="hero">
+            <p class="eyebrow">Бакалаврський демонстраційний прототип</p>
+            <h1>Zero Secret Server Authentication Demo</h1>
+            <p class="lead">
+                Невеликий локальний стенд для ілюстрації ідеї автентифікації, у якій
+                сервер не повинен зберігати секрет користувача у відкритому вигляді.
+            </p>
+            <div class="warning" role="note">
+                Це навчальний прототип для академічної демонстрації. Він не є готовою
+                продукційною системою автентифікації та не повинен використовуватися для
+                захисту реальних облікових записів.
+            </div>
+        </section>
+
+        <section class="grid">
+            <section class="card">
+                <h2>Локальна симуляція</h2>
+                <p class="section-text">
+                    Введіть ідентифікатор користувача та локальний секрет. Усі обчислення
+                    виконуються тільки в браузері за допомогою Web Crypto API.
+                </p>
+
+                <form id="auth-form" class="auth-form">
+                    <label for="user-id">Ідентифікатор користувача</label>
+                    <input
+                        id="user-id"
+                        name="userId"
+                        type="text"
+                        autocomplete="username"
+                        placeholder="student.demo"
+                        required
+                    >
+
+                    <label for="passphrase">Локальний секрет / passphrase</label>
+                    <input
+                        id="passphrase"
+                        name="passphrase"
+                        type="password"
+                        autocomplete="current-password"
+                        placeholder="Введіть довільну фразу"
+                        required
+                    >
+
+                    <button type="submit">Симулювати автентифікацію</button>
+                </form>
+            </section>
+
+            <section class="card">
+                <h2>Що демонструється</h2>
+                <ol class="concept-list">
+                    <li>Локальне хешування секрету в браузері.</li>
+                    <li>Генерація одноразового виклику `nonce`.</li>
+                    <li>Побудова демонстраційної відповіді на основі ідентифікатора, виклику та похідного значення.</li>
+                    <li>Пояснювальний журнал кроків без мережевих запитів і без збереження даних.</li>
+                </ol>
+                <p class="section-text muted">
+                    Модель спрощена навмисно: тут немає реєстрації, сервера, сховища,
+                    сесій, транспортного захисту, контролю повторних спроб або повноцінної
+                    криптографічної схеми перевірки.
+                </p>
+            </section>
+        </section>
+
+        <section class="card output-card">
+            <div class="output-header">
+                <h2>Покроковий журнал</h2>
+                <button id="reset-log" type="button" class="secondary-button">Очистити</button>
+            </div>
+
+            <dl id="summary" class="summary" aria-live="polite">
+                <div>
+                    <dt>Стан</dt>
+                    <dd>Очікування запуску симуляції</dd>
+                </div>
+                <div>
+                    <dt>Nonce</dt>
+                    <dd>ще не згенеровано</dd>
+                </div>
+                <div>
+                    <dt>Demo response</dt>
+                    <dd>ще не обчислено</dd>
+                </div>
+            </dl>
+
+            <ol id="log" class="log" aria-live="polite">
+                <li>Журнал буде заповнено після натискання кнопки.</li>
+            </ol>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>

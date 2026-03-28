@@ -1,33 +1,12 @@
-# OS files
 .DS_Store
 Thumbs.db
-
-# IDE and editors
-.vscode/
-.idea/
-
-# Logs
+node_modules
+dist
+build
+coverage
 *.log
-
-# Environment and secrets
 .env
 .env.*
-secrets.json
-config.local.json
-
-# Temporary files
-*.tmp
-*.bak
-tmp/
-temp/
-
-# Archives
+.vscode/*
+!.vscode/extensions.json
 *.zip
-*.rar
-*.7z
-
-# Generated or export files
-exports/
-dist/
-coverage/
-node_modules/
